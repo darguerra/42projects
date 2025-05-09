@@ -6,13 +6,14 @@
 /*   By: darguerr <darguerr@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/29 15:17:22 by darguerr          #+#    #+#             */
-/*   Updated: 2025/05/08 18:13:52 by darguerr         ###   ########.fr       */
+/*   Updated: 2025/05/09 13:08:16 by darguerr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef LIBFT_H
 # define LIBFT_H
 # include <unistd.h>
+# include <stdio.h>
 
 int				ft_isalnum(int a);
 int				ft_isalpha(int c);
