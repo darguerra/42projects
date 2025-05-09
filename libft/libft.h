@@ -6,7 +6,7 @@
 /*   By: darguerr <darguerr@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/29 15:17:22 by darguerr          #+#    #+#             */
-/*   Updated: 2025/05/09 13:08:16 by darguerr         ###   ########.fr       */
+/*   Updated: 2025/05/09 16:04:18 by darguerr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,4 +30,5 @@ size_t			ft_strlcat(char *dst, const char *src, size_t dstsize);
 int				ft_toupper(int ch);
 int				ft_tolower(int ch);
 char			*ft_strchr(const char *str, int search_str);
+char			*ft_strrchr(const char *str, int chr);
 #endif

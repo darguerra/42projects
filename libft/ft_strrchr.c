@@ -1,29 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strchr.c                                        :+:      :+:    :+:   */
+/*   ft_strrchr.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: darguerr <darguerr@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/05/08 17:16:42 by darguerr          #+#    #+#             */
-/*   Updated: 2025/05/09 14:17:25 by darguerr         ###   ########.fr       */
+/*   Created: 2025/05/09 14:18:34 by darguerr          #+#    #+#             */
+/*   Updated: 2025/05/09 16:06:15 by darguerr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-char	*ft_strchr(const char *str, int search_str)
+char	*ft_strrchr(const char *str, int chr)
 {
-	size_t	i;
+	int	i;
 
-	i = 0;
-	while (str[i] != '\0')
+	i = ft_strlen(str);
+	while (i >= 0)
 	{
-		if (str[i] == (char)search_str)
+		if (str[i] == (char)chr)
 			return ((char *)&str[i]);
-		i++;
+		i--;
 	}
-	if ((char)search_str == '\0')
-		return ((char *)&str[i]);
+	/*if (chr == '\0')
+		return ((char *)&str[i]);*/
 	return (NULL);
 }
