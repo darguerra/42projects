@@ -16,7 +16,7 @@ CFLAGS = -Wall -Werror -Wextra
 all: $(NAME)
 
 $(NAME): $(OBJ)
-	$(AR) r $(NAME) -o $(OBJ)
+	$(AR) r $(NAME) $(OBJ)
 	@echo "Compilation succesful"
 	@echo "$(NAME) created"
 $(OBJ): $(SRC)
