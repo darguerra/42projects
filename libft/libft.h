@@ -6,7 +6,7 @@
 /*   By: darguerr <darguerr@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/29 15:17:22 by darguerr          #+#    #+#             */
-/*   Updated: 2025/05/11 16:53:56 by darguerr         ###   ########.fr       */
+/*   Updated: 2025/05/11 17:29:00 by darguerr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,7 @@
 # define LIBFT_H
 # include <unistd.h>
 # include <stdio.h>
+# include <stdlib.h>
 
 int				ft_isalnum(int a);
 int				ft_isalpha(int c);
@@ -36,4 +37,6 @@ void			*ft_memchr(const void *s, int c, size_t n);
 int				ft_memcmp(const void *s1, const void *s2, size_t n);
 char			*ft_strnstr(const char *hay, const char *need, size_t len);
 int				ft_atoi(const char *str);
+void			*ft_calloc(size_t count, size_t size);
+char			*ft_strdup(const char *s);
 #endif
