@@ -6,7 +6,7 @@
 /*   By: darguerr <darguerr@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/23 21:49:37 by darguerr          #+#    #+#             */
-/*   Updated: 2025/05/26 19:04:18 by darguerr         ###   ########.fr       */
+/*   Updated: 2025/05/27 09:56:59 by darguerr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,13 +19,48 @@ int	ft_printf(char const *format, ...)
 
 	va_start(list, format);
 	i = 0;
-	while (i < format) //Atoi for change format(?)
+	while (i < ft_strlen(format))
 	{
-		va_arg(list,int);
-		/*
-		There must be the condionts
-		*/
-		i++;
+		if(format[i] == '%')
+		{
+			if (format[i + 1] == 'c')
+			{
+				write(1, va_arg(list, char), 1);
+			}
+			else if (format[i + 1] == 's')
+			{
+				
+			}
+			else if (format[i + 1] == 'p')
+			{
+				/* code */
+			}
+			else if (format[i + 1] == 'd')
+			{
+				va_arg(list,int);
+			}
+			else if (format[i] == 'i')
+			{
+				/* code */
+			}
+			else if (format[i] == 'u')
+			{
+				/* code */
+			}
+			else if (format[i] == 'x')
+			{
+				/* code */
+			}
+			else if (format[i] == 'X')
+			{
+				/* code */
+			}
+			else if (format[i] == '%')
+			{
+				/* code */
+			}
+		}
+		i++; /* This site may be incorrect*/
 	}
 	
 }
