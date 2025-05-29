@@ -6,7 +6,7 @@
 /*   By: darguerr <darguerr@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/23 21:49:37 by darguerr          #+#    #+#             */
-/*   Updated: 2025/05/27 09:56:59 by darguerr         ###   ########.fr       */
+/*   Updated: 2025/05/28 18:20:17 by darguerr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,5 +62,5 @@ int	ft_printf(char const *format, ...)
 		}
 		i++; /* This site may be incorrect*/
 	}
-	
+
 }
