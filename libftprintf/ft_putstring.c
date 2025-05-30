@@ -1,50 +1,33 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_printf.c                                        :+:      :+:    :+:   */
+/*   ft_putstring.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: darguerr <darguerr@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/05/23 21:49:37 by darguerr          #+#    #+#             */
-/*   Updated: 2025/05/30 17:14:43 by darguerr         ###   ########.fr       */
+/*   Created: 2025/05/30 17:03:10 by darguerr          #+#    #+#             */
+/*   Updated: 2025/05/30 17:10:00 by darguerr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libftprintf.h"
-/*Primero hacer las funciones*/
-/*
-ft_putnbr ✅ (print a number)
-ft_putchar ✅ (print a character)
-ft_putstring ✅ (print a String)
 
-
-
-*/
-
-
-int	ft_printf(char const *format, ...)
+int	ft_putstring(char *string)
 {
-	va_list	list;
 	int	i;
-	int	count;
 
-	va_start(list, format);
-	count = 0;
 	i = 0;
-	while (i < ft_strlen(format))
+	while (string[i] != '\0')
 	{
-		if(format[i] == '%')
-		{
-			i++;
-			if (format[i] == '%')
-			{
-				ft_putchar('%');
-			}
-			count += ft_selector(format[i], list, i);
-		}
+		ft_putchar(string[i]);
 		i++;
-		ft_putchar(format[i]);
 	}
-	va_end(list);
+	return (0);
+}
+int main()
+{
+	char *string = "Hola caracola";
+
+	ft_putstring(string);
 	return (0);
 }

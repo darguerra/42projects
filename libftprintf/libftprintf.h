@@ -6,7 +6,7 @@
 /*   By: darguerr <darguerr@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/23 21:50:55 by darguerr          #+#    #+#             */
-/*   Updated: 2025/05/30 16:02:01 by darguerr         ###   ########.fr       */
+/*   Updated: 2025/05/30 17:09:23 by darguerr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,4 +23,5 @@ int				ft_numlen(int n);
 int				ft_selector(char *format, va_list list, int iterator);
 void			ft_putchar(char c);
 void			ft_putnbr(int n, int fd);
+int				ft_putstring(char *string);
 #endif

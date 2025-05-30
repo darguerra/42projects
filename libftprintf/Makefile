@@ -9,6 +9,8 @@ ft_selector.c \
 ft_putchar.c \
 ft_strlen.c \
 ft_putnbr.c \
+ft_putstring.c \
+
 
 OBJ = $(SRC:.c=.o)
 CFLAGS = -Wall -Werror -Wextra
