@@ -6,7 +6,7 @@
 /*   By: darguerr <darguerr@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/30 13:01:43 by darguerr          #+#    #+#             */
-/*   Updated: 2025/05/30 13:55:40 by darguerr         ###   ########.fr       */
+/*   Updated: 2025/05/30 17:01:03 by darguerr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,19 +14,5 @@
 
 void	ft_putchar(char c)
 {
-	write(1, &c,1);
+	write(1, &c, 1);
 }
-/*int	main(void)
-{
-	ft_putchar('c');
-	ft_putchar('o');
-	ft_putchar('c');
-	ft_putchar('a');
-	ft_putchar('\n');
-	ft_putchar('c');
-	ft_putchar('o');
-	ft_putchar('l');
-	ft_putchar('a');
-
-	return (0);
-}*/
