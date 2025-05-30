@@ -5,7 +5,10 @@ NAME = libftprintf.a
 HEADER = libftprintf.h
 
 SRC = ft_printf.c \
+ft_selector.c \
+ft_putchar.c \
 ft_strlen.c \
+ft_putnbr.c \
 
 OBJ = $(SRC:.c=.o)
 CFLAGS = -Wall -Werror -Wextra

@@ -1,26 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   libftprintf.h                                      :+:      :+:    :+:   */
+/*   ft_putnbr.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: darguerr <darguerr@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/05/23 21:50:55 by darguerr          #+#    #+#             */
-/*   Updated: 2025/05/30 16:02:01 by darguerr         ###   ########.fr       */
+/*   Created: 2025/05/30 16:01:08 by darguerr          #+#    #+#             */
+/*   Updated: 2025/05/30 16:05:01 by darguerr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef LIBFT_H
-# define LIBFT_H
-# include <unistd.h>
-# include <stdio.h>
-# include <stdlib.h>
-# include <stdarg.h>
+void	ft_putnbr(int n, int fd)
+{
+	char	c;
 
-int				ft_printf(char const *format, ...);
-unsigned int	ft_strlen(const char *str);
-int				ft_numlen(int n);
-int				ft_selector(char *format, va_list list, int iterator);
-void			ft_putchar(char c);
-void			ft_putnbr(int n, int fd);
-#endif
+	if (n == -2147483648)
+	{
+		write(fd, "-2147483648", 11);
+		return ;
+	}
+	if (n < 0)
+	{
+		write(fd, "-", 1);
+		n = -n;
+	}
+	if (n > 9)
+		ft_putnbr_fd(n / 10, fd);
+	c = (n % 10) + '0';
+	write(fd, &c, 1);
+}
