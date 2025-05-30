@@ -6,7 +6,7 @@
 /*   By: darguerr <darguerr@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/30 16:01:08 by darguerr          #+#    #+#             */
-/*   Updated: 2025/05/30 16:05:01 by darguerr         ###   ########.fr       */
+/*   Updated: 2025/05/30 16:18:18 by darguerr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ void	ft_putnbr(int n, int fd)
 		n = -n;
 	}
 	if (n > 9)
-		ft_putnbr_fd(n / 10, fd);
+		ft_putnbr(n / 10, fd);
 	c = (n % 10) + '0';
 	write(fd, &c, 1);
 }
