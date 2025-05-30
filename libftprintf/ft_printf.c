@@ -6,11 +6,12 @@
 /*   By: darguerr <darguerr@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/23 21:49:37 by darguerr          #+#    #+#             */
-/*   Updated: 2025/05/28 18:20:17 by darguerr         ###   ########.fr       */
+/*   Updated: 2025/05/30 12:59:53 by darguerr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
+
 
 int	ft_printf(char const *format, ...)
 {
@@ -60,7 +61,7 @@ int	ft_printf(char const *format, ...)
 				/* code */
 			}
 		}
-		i++; /* This site may be incorrect*/
+		i++;
 	}
 
 }

@@ -1,25 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strlen.c                                        :+:      :+:    :+:   */
+/*   libftprintf.h                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: darguerr <darguerr@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/04/25 16:23:30 by darguerr          #+#    #+#             */
-/*   Updated: 2025/05/30 13:05:33 by darguerr         ###   ########.fr       */
+/*   Created: 2025/05/23 21:50:55 by darguerr          #+#    #+#             */
+/*   Updated: 2025/05/30 13:05:20 by darguerr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libftprintf.h"
+#ifndef LIBFT_H
+# define LIBFT_H
+# include <unistd.h>
+# include <stdio.h>
+# include <stdlib.h>
+# include <stdarg.h>
 
-unsigned	int	ft_strlen(const char *str )
-{
-	unsigned int	le;
+int				ft_printf(char const *format, ...);
+unsigned int	ft_strlen(const char *str);
+int				ft_numlen(int n);
 
-	le = 0;
-	while (str[le] != '\0')
-	{
-		le++;
-	}
-	return (le);
-}
+#endif

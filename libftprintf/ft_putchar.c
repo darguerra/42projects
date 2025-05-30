@@ -1,24 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   libft.h                                            :+:      :+:    :+:   */
+/*   ft_putchar.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: darguerr <darguerr@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/05/23 21:50:55 by darguerr          #+#    #+#             */
-/*   Updated: 2025/05/27 10:02:11 by darguerr         ###   ########.fr       */
+/*   Created: 2025/05/30 13:01:43 by darguerr          #+#    #+#             */
+/*   Updated: 2025/05/30 13:05:36 by darguerr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef LIBFT_H
-# define LIBFT_H
-# include <unistd.h>
-# include <stdio.h>
-# include <stdlib.h>
-# include <stdarg.h>
+#include "libftprintf.h"
 
-int				ft_printf(char const *format, ...);
-unsigned int	ft_strlen(const char *str);
-int				ft_numlen(int n);
+int	ft_putchar(char c)
+{
 
-#endif
+}
