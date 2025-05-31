@@ -6,7 +6,7 @@
 /*   By: darguerr <darguerr@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/23 21:50:55 by darguerr          #+#    #+#             */
-/*   Updated: 2025/05/31 08:10:51 by darguerr         ###   ########.fr       */
+/*   Updated: 2025/05/31 08:22:44 by darguerr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,4 +26,5 @@ void			ft_putnbr(int n, int fd);
 int				ft_putstring(char *string);
 int				ft_puthxd(unsigned int num, int uppercase);
 int				ft_putpointer(void *ptr);
+int				ft_putunsignedint(unsigned int n);
 #endif

@@ -12,6 +12,7 @@ ft_putnbr.c \
 ft_putstring.c \
 ft_puthxd.c \
 ft_putpointer.c \
+ft_putunsignedint.c \
 
 
 OBJ = $(SRC:.c=.o)
