@@ -6,7 +6,7 @@
 /*   By: darguerr <darguerr@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/23 21:50:55 by darguerr          #+#    #+#             */
-/*   Updated: 2025/05/31 08:29:10 by darguerr         ###   ########.fr       */
+/*   Updated: 2025/05/31 08:44:37 by darguerr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@
 # include <stdlib.h>
 # include <stdarg.h>
 
-int				ft_printf(char const *format, ...);
+int				ft_printf(char *format, ...);
 unsigned int	ft_strlen(const char *str);
 int				ft_numlen(int n);
 int				ft_selector(char *format, va_list list, int iterator);
