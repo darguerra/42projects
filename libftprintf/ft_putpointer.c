@@ -6,15 +6,15 @@
 /*   By: darguerr <darguerr@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/31 08:10:26 by darguerr          #+#    #+#             */
-/*   Updated: 2025/05/31 08:20:43 by darguerr         ###   ########.fr       */
+/*   Updated: 2025/05/31 08:41:26 by darguerr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libftprintf.h"
 
-int ft_putpointer(void *ptr)
+int	ft_putpointer(void *ptr)
 {
-	int		count;
+	int				count;
 	unsigned long	resultptr;
 
 	count = 0;
