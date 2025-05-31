@@ -6,7 +6,7 @@
 /*   By: darguerr <darguerr@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/30 17:03:10 by darguerr          #+#    #+#             */
-/*   Updated: 2025/05/30 17:10:00 by darguerr         ###   ########.fr       */
+/*   Updated: 2025/05/30 21:12:05 by darguerr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,10 +24,10 @@ int	ft_putstring(char *string)
 	}
 	return (0);
 }
-int main()
+/*int main()
 {
 	char *string = "Hola caracola";
 
 	ft_putstring(string);
 	return (0);
-}
+}*/

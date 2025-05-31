@@ -6,7 +6,7 @@
 /*   By: darguerr <darguerr@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/23 21:49:37 by darguerr          #+#    #+#             */
-/*   Updated: 2025/05/30 17:54:13 by darguerr         ###   ########.fr       */
+/*   Updated: 2025/05/31 08:05:54 by darguerr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,8 +15,9 @@
 /*
 ft_putnbr ✅ (print a number)
 ft_putchar ✅ (print a character)
+ft_putunsignedint ✅ (print a unsigned int)
 ft_putstring ✅ (print a String)
-ft_hxd (print a hexadecimal -lower and uppercase-)
+ft_hxd ✅(print a hexadecimal -lower and uppercase-)
 ft_ptr (print a Pointer)
 
 

@@ -6,7 +6,7 @@
 /*   By: darguerr <darguerr@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/30 13:14:42 by darguerr          #+#    #+#             */
-/*   Updated: 2025/05/30 18:00:16 by darguerr         ###   ########.fr       */
+/*   Updated: 2025/05/30 21:57:17 by darguerr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ int	ft_selector(char character, va_list list, int iterator)
 		}
 		else if (character == 's')
 		{
-			
+			ft_putstring(va_arg(list, char *));
 		}
 		else if (character == 'p')
 		{
@@ -29,11 +29,11 @@ int	ft_selector(char character, va_list list, int iterator)
 		}
 		else if (character == 'd')
 		{
-			/*here putnbr*/
+			ft_putnbr(va_arg(list, int),1);
 		}
 		else if (character == 'i')
 		{
-			/* here putnbr */
+			ft_putnbr(va_arg(list, int),1);
 		}
 		else if (character == 'u')
 		{
@@ -41,15 +41,15 @@ int	ft_selector(char character, va_list list, int iterator)
 		}
 		else if (character == 'x')
 		{
-				/*Here puthxd*/			
+			ft_puthxd(va_arg(list, int),0);
 		}
 		else if (character == 'X')
 		{
-			/* Here puthxd */
+			ft_puthxd(va_arg(list, int),1);
 		}
 		else if (character == '%')
 		{
-				/* code */
+			ft_putchar('%');
 		}
-		return (0);
+		return ();
 }

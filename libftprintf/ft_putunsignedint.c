@@ -1,33 +1,39 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_putnbr.c                                        :+:      :+:    :+:   */
+/*   ft_putunsignedint.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: darguerr <darguerr@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/05/30 16:01:08 by darguerr          #+#    #+#             */
-/*   Updated: 2025/05/31 07:47:56 by darguerr         ###   ########.fr       */
+/*   Created: 2025/05/31 07:43:14 by darguerr          #+#    #+#             */
+/*   Updated: 2025/05/31 08:04:02 by darguerr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libftprintf.h"
 
-void	ft_putnbr(int n, int fd)
+int	ft_putunsignedint(unsigned int n)
 {
-	char	c;
+	char			c;
+	unsigned int	count;
 
-	if (n == -2147483648)
-	{
-		write(fd, "-2147483648", 11);
-		return ;
-	}
-	if (n < 0)
-	{
-		write(fd, "-", 1);
-		n = -n;
-	}
+	count = 0;
 	if (n > 9)
-		ft_putnbr(n / 10, fd);
+		count += ft_putunsignedint(n / 10);
 	c = (n % 10) + '0';
 	ft_putchar(c);
+	return (count + 1);
 }
+
+/* int	main(void)
+{
+    int	ret1;
+    int	ret2;
+
+    ret1 = ft_putunsignedint(-129);
+    write(1, "\n", 1);
+    ret2 = ft_putunsignedint(1998);
+    write(1, "\n", 1);
+    printf("Chars printed: %d, %d\n", ret1, ret2);
+    return (0);
+} */
