@@ -6,11 +6,11 @@
 /*   By: darguerr <darguerr@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/23 21:49:37 by darguerr          #+#    #+#             */
-/*   Updated: 2025/05/31 08:47:22 by darguerr         ###   ########.fr       */
+/*   Updated: 2025/05/31 09:27:01 by darguerr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libftprintf.h"
+#include "ft_printf.h"
 
 int	ft_printf(char *format, ...)
 {
@@ -30,10 +30,10 @@ int	ft_printf(char *format, ...)
 			{
 				ft_putchar('%');
 			}
-			count += ft_selector(&format[i], list, i);
+			count += ft_selector(format[i], list, i);
 		}
-		i++;
 		ft_putchar(format[i]);
+		i++;
 	}
 	va_end(list);
 	return (count);

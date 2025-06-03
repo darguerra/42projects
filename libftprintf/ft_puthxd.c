@@ -6,36 +6,36 @@
 /*   By: darguerr <darguerr@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/30 17:53:39 by darguerr          #+#    #+#             */
-/*   Updated: 2025/05/31 08:35:34 by darguerr         ###   ########.fr       */
+/*   Updated: 2025/06/03 12:37:08 by darguerr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libftprintf.h"
+#include "ft_printf.h"
 
 int	ft_puthxd(unsigned int num, int uppercase)
 {
-	const char	*hex_lower;
-	const char	*hex_upper;
-	int			count;
-	char		c;
+	const char	*hex;
+	int		count;
 
-	hex_lower = "0123456789abcdef";
-	hex_upper = "0123456789ABCDEF";
-	if (uppercase == 0)
-	{
-		if (num < 16)
-			ft_putchar(hex_lower[num]);
-		else
-			ft_puthxd(num / 16, 0);
-		c = (num % 16) + '0';
-		ft_putchar(hex_lower[num]);
-		return (count);
-	}
-	if (num < 16)
-		ft_putchar(hex_upper[num]);
-	else
-		ft_puthxd(num / 16, 0);
-	c = (num % 16) + '0';
-	ft_putchar(hex_upper[num]);
-	return (count);
+	count = 0;
+	hex = (uppercase == 0) ? "0123456789abcdef" : "0123456789ABCDEF";
+
+	if (num >= 16)
+		count += ft_puthxd(num / 16, uppercase);
+	ft_putchar(hex[num % 16]);
+	return (count + 1);
 }
+/*int	main(void)
+{
+    int result;
+    
+    result = ft_puthxd(255, 0);  // Should print "ff" and return 2
+    ft_putchar('\n');
+    printf("Chars printed: %d\n", result);
+    
+    result = ft_puthxd(255, 1);  // Should print "FF" and return 2
+    ft_putchar('\n');
+    printf("Chars printed: %d\n", result);
+    
+    return (0);
+} */

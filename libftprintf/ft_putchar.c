@@ -6,11 +6,11 @@
 /*   By: darguerr <darguerr@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/30 13:01:43 by darguerr          #+#    #+#             */
-/*   Updated: 2025/05/30 17:01:03 by darguerr         ###   ########.fr       */
+/*   Updated: 2025/05/31 08:54:51 by darguerr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libftprintf.h"
+#include "ft_printf.h"
 
 void	ft_putchar(char c)
 {

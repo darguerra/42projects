@@ -6,11 +6,11 @@
 /*   By: darguerr <darguerr@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/30 16:01:08 by darguerr          #+#    #+#             */
-/*   Updated: 2025/05/31 07:47:56 by darguerr         ###   ########.fr       */
+/*   Updated: 2025/05/31 08:54:51 by darguerr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libftprintf.h"
+#include "ft_printf.h"
 
 void	ft_putnbr(int n, int fd)
 {
