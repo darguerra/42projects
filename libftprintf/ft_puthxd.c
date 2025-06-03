@@ -6,20 +6,23 @@
 /*   By: darguerr <darguerr@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/30 17:53:39 by darguerr          #+#    #+#             */
-/*   Updated: 2025/06/03 13:12:50 by darguerr         ###   ########.fr       */
+/*   Updated: 2025/06/03 13:53:19 by darguerr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
+
 /* This function print a decimal number in hexadecimal number */
 int	ft_puthxd(unsigned int num, int uppercase)
 {
 	const char	*hex;
-	int		count;
+	int			count;
 
 	count = 0;
-	hex = (uppercase == 0) ? "0123456789abcdef" : "0123456789ABCDEF";
-
+	if (uppercase == 0)
+		hex = "0123456789abcdef";
+	else
+		hex = "0123456789ABCDEF";
 	if (num >= 16)
 		count += ft_puthxd(num / 16, uppercase);
 	ft_putchar(hex[num % 16]);

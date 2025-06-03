@@ -6,13 +6,14 @@
 /*   By: darguerr <darguerr@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/31 08:10:26 by darguerr          #+#    #+#             */
-/*   Updated: 2025/06/03 13:43:26 by darguerr         ###   ########.fr       */
+/*   Updated: 2025/06/03 13:54:37 by darguerr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
-/* Prints a pointer address in hexadecimal format (0x prefix) or "nil" for NULL pointers.
-   Returns the number of characters printed. */
+/* Prints a pointer address in hexadecimal format
+(0x prefix) or "nil" for NULL pointers.
+Returns the number of characters printed. */
 int	ft_putpointer(void *ptr)
 {
 	int				count;
