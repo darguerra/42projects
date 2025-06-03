@@ -6,12 +6,13 @@
 /*   By: darguerr <darguerr@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/30 17:03:10 by darguerr          #+#    #+#             */
-/*   Updated: 2025/05/31 08:54:51 by darguerr         ###   ########.fr       */
+/*   Updated: 2025/06/03 13:28:49 by darguerr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
+/* Print a string in terminal */
 int	ft_putstring(char *string)
 {
 	int	i;
@@ -24,10 +25,10 @@ int	ft_putstring(char *string)
 	}
 	return (0);
 }
-/*int main()
+/* int main()
 {
 	char *string = "Hola caracola";
 
 	ft_putstring(string);
 	return (0);
-}*/
+} */
