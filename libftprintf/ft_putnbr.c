@@ -6,31 +6,32 @@
 /*   By: darguerr <darguerr@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/30 16:01:08 by darguerr          #+#    #+#             */
-/*   Updated: 2025/06/03 13:37:55 by darguerr         ###   ########.fr       */
+/*   Updated: 2025/06/04 23:36:06 by darguerr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 /* Print a number in terminal */
-void	ft_putnbr(int n, int fd)
+int	ft_putnbr(int n, int fd)
 {
-	char	c;
+	int	count;
 
+	count = 0;
 	if (n == -2147483648)
 	{
 		write(fd, "-2147483648", 11);
-		return ;
+		return (11);
 	}
 	if (n < 0)
 	{
 		write(fd, "-", 1);
 		n = -n;
+		count++;
 	}
 	if (n > 9)
-		ft_putnbr(n / 10, fd);
-	c = (n % 10) + '0';
-	ft_putchar(c);
-	return ;
+		count += ft_putnbr(n / 10, fd);
+	ft_putchar((n % 10) + '0');
+	return (count + 1);
 }
 /* int	main()
 {

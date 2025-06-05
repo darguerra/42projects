@@ -6,7 +6,7 @@
 /*   By: darguerr <darguerr@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/31 08:10:26 by darguerr          #+#    #+#             */
-/*   Updated: 2025/06/03 13:54:37 by darguerr         ###   ########.fr       */
+/*   Updated: 2025/06/05 19:22:47 by darguerr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,13 +21,12 @@ int	ft_putpointer(void *ptr)
 
 	count = 0;
 	resultptr = (unsigned long)ptr;
-	if (ptr == NULL)
+	if (!resultptr)
 	{
-		ft_putstring("nil");
-		return (3);
+		count += ft_putstring("0x0");
+		return (count);
 	}
-	ft_putstring("0x");
-	count += 2;
+	count += ft_putstring("0x");
 	count += ft_puthxd(resultptr, 0);
 	return (count);
 }

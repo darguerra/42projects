@@ -6,7 +6,7 @@
 /*   By: darguerr <darguerr@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/30 17:03:10 by darguerr          #+#    #+#             */
-/*   Updated: 2025/06/03 13:28:49 by darguerr         ###   ########.fr       */
+/*   Updated: 2025/06/05 19:02:44 by darguerr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,12 +18,17 @@ int	ft_putstring(char *string)
 	int	i;
 
 	i = 0;
+	if (!string)
+	{
+		ft_putstring("(null)");
+		return (6);
+	}
 	while (string[i] != '\0')
 	{
 		ft_putchar(string[i]);
 		i++;
 	}
-	return (0);
+	return (i);
 }
 /* int main()
 {

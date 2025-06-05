@@ -6,7 +6,7 @@
 /*   By: darguerr <darguerr@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/23 21:50:55 by darguerr          #+#    #+#             */
-/*   Updated: 2025/06/03 13:54:18 by darguerr         ###   ########.fr       */
+/*   Updated: 2025/06/04 23:51:12 by darguerr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,14 +17,14 @@
 # include <stdlib.h>
 # include <stdarg.h>
 
-int				ft_printf(char *format, ...);
+int				ft_printf(const char *format, ...);
 unsigned int	ft_strlen(const char *str);
 int				ft_numlen(int n);
-int				ft_selector(char character, va_list list, int iterator);
-void			ft_putchar(char c);
-void			ft_putnbr(int n, int fd);
+int				ft_selector(char character, va_list list);
+int				ft_putchar(char c);
+int				ft_putnbr(int n, int fd);
 int				ft_putstring(char *string);
-int				ft_puthxd(unsigned int num, int uppercase);
+int				ft_puthxd(unsigned long num, int uppercase);
 int				ft_putpointer(void *ptr);
 int				ft_putunsignedint(unsigned int n);
 #endif

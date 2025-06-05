@@ -1,8 +1,6 @@
-##### MAKEFILE #####
-
 # Global Config
 NAME = libftprintf.a
-HEADER = libftprintf.h
+HEADER = ft_printf.h
 
 SRC = ft_printf.c \
 ft_selector.c \
@@ -12,30 +10,28 @@ ft_putnbr.c \
 ft_putstring.c \
 ft_puthxd.c \
 ft_putpointer.c \
-ft_putunsignedint.c \
-
+ft_putunsignedint.c
 
 OBJ = $(SRC:.c=.o)
+CC = cc
 CFLAGS = -Wall -Werror -Wextra
 
 all: $(NAME)
 
 $(NAME): $(OBJ)
-	$(AR) r $(NAME) $(OBJ)
-	@echo "Compilation succesful"
+	ar rcs $(NAME) $(OBJ)
+	@echo "Compilation successful"
 	@echo "$(NAME) created"
-$(OBJ): $(SRC)
-	$(CC) -fPIC $(CFLAGS) -c $(SRC)
-	gcc -shared -o libft.so $(OBJ)
-so: 
-	$(CC) -fPIC $(CFLAGS) $(SRC)
-	gcc -shared -o libft.so $(OBJ)
+
+%.o: %.c $(HEADER)
+	$(CC) $(CFLAGS) -c $< -o $@
+
 clean:
-	rm -rf $(OBJ)
+	rm -f $(OBJ)
 
 fclean: clean
-	rm -rf $(NAME)
+	rm -f $(NAME)
 
 re: fclean all
 
-.PHONY: all fclean re
+.PHONY: all clean fclean re
