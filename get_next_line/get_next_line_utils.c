@@ -1,27 +1,14 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strrchr.c                                       :+:      :+:    :+:   */
+/*   get_next_line_utils.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: darguerr <darguerr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/05/09 14:18:34 by darguerr          #+#    #+#             */
-/*   Updated: 2025/06/17 17:36:22 by darguerr         ###   ########.fr       */
+/*   Created: 2025/06/17 17:13:36 by darguerr          #+#    #+#             */
+/*   Updated: 2025/06/17 17:14:00 by darguerr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "get_next_line.h"
 
-char	*ft_strrchr(const char *str, int chr)
-{
-	int	i;
-
-	i = ft_strlen(str);
-	while (i >= 0)
-	{
-		if (str[i] == (char)chr)
-			return ((char *)&str[i]);
-		i--;
-	}
-	return (NULL);
-}
