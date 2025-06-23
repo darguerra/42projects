@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   get_next_line.h                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: darguerr <darguerr@student.42.fr>          +#+  +:+       +#+        */
+/*   By: darguerr <darguerr@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/17 17:00:50 by darguerr          #+#    #+#             */
-/*   Updated: 2025/06/19 16:47:53 by darguerr         ###   ########.fr       */
+/*   Updated: 2025/06/23 18:40:51 by darguerr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,5 +30,8 @@ typedef struct s_list
 }   t_list;
 
 
-char *get_next_line(int fd);
+char	*get_next_line(int fd);
+char	*ft_strchr(const char *str, int search_str);
+char	*ft_strjoin_free(char const *s1, char const *s2);
+size_t ft_strlen(const char *s);
 #endif

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   get_next_line.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: darguerr <darguerr@student.42.fr>          +#+  +:+       +#+        */
+/*   By: darguerr <darguerr@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/17 16:57:27 by darguerr          #+#    #+#             */
-/*   Updated: 2025/06/22 17:45:42 by darguerr         ###   ########.fr       */
+/*   Updated: 2025/06/23 20:09:55 by darguerr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,12 +17,40 @@ but if would there are other behaviors or errors must return NULL.
 */
 char *get_next_line(int fd)
 {
-    static t_list   *list = NULL;
-    char            *next_line;
-    
-    result = read(fd, buffer, 15);
-    if (result < 0) // < 0 or <= 0?
-        return (NULL);
+	static char	*remainder = NULL;
+	char		buffer[BUFFER_SIZE + 1];
+	char		*line;
+	int			bytes_read;
+
+	if (fd < 0 || BUFFER_SIZE <= 0)
+		return (NULL);
+	if (!remainder)
+		remainder = malloc(1);
+	if(!remainder)
+		return (NULL);
+	remainder[0] = '\0';
+	while (!ft_strchr(remainder, '\n') && 
+			(bytes_read = read(fd, buffer, BUFFER_SIZE)) > 0)
+	{
+		buffer[bytes_read] = '\0';
+		remainder = ft_strjoin(remainder, buffer);
+		if (!remainder)
+			return (NULL);
+	}
+	if (bytes_read < 0)
+	{
+		free(remainder);
+		remainder = NULL;
+		return (NULL);
+	}
+	if (remainder[0] == '\0')
+	{
+		free(remainder);
+		remainder = NULL;
+		return (remainder);
+	}
+	/**********/
+	line = extr
 }
 
 int main(void)
