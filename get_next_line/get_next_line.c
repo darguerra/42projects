@@ -6,7 +6,7 @@
 /*   By: darguerr <darguerr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/17 16:57:27 by darguerr          #+#    #+#             */
-/*   Updated: 2025/06/24 18:12:32 by darguerr         ###   ########.fr       */
+/*   Updated: 2025/06/24 19:49:35 by darguerr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,7 @@ char *get_next_line(int fd)
 			(bytes_read = read(fd, buffer, BUFFER_SIZE)) > 0)
 	{
 		buffer[bytes_read] = '\0';
-		remainder = ft_strjoin(remainder, buffer);
+		remainder = ft_strjoin_free(remainder, buffer);
 		if (!remainder)
 			return (NULL);
 	}
@@ -70,7 +70,7 @@ int main(void)
 
     //open the file with the flag READ ONLY
     //return the file descriptor
-    fd = open("/file.txt/", O_RDONLY); 
+    fd = open("file.txt", O_RDONLY); 
 
 //use the GNL function with fd parameter inside in a loop while
     line = get_next_line(fd);
@@ -80,4 +80,5 @@ int main(void)
     }
 
 close(fd);
+return (0);
 }

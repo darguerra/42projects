@@ -6,7 +6,7 @@
 /*   By: darguerr <darguerr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/17 17:00:50 by darguerr          #+#    #+#             */
-/*   Updated: 2025/06/24 17:08:06 by darguerr         ###   ########.fr       */
+/*   Updated: 2025/06/24 19:48:41 by darguerr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,5 +35,5 @@ char	*ft_strchr(const char *str, int search_str);
 char	*ft_strjoin_free(char const *s1, char const *s2);
 size_t  ft_strlen(const char *s);
 char    *extract_line(const char *s);
-char    *update_remainder(char *s);
+char    *update_list(char *s);
 #endif
