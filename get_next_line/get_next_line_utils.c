@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   get_next_line_utils.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: darguerr <darguerr@student.42malaga.com    +#+  +:+       +#+        */
+/*   By: darguerr <darguerr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/17 17:13:36 by darguerr          #+#    #+#             */
-/*   Updated: 2025/06/23 20:09:53 by darguerr         ###   ########.fr       */
+/*   Updated: 2025/06/24 17:03:30 by darguerr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -118,7 +118,13 @@ char *update_remainder(char *s)
 		free(s);
 		return (NULL);
 	}
-	
-	
-	
+	j = 0;
+    while (s[i + j])
+    {
+        new_remainder[j] = s[i + j];
+        j++;
+    }
+    new_remainder[j] = '\0';
+    free(s);
+    return (new_remainder);
 }

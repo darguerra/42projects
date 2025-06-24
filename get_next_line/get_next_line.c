@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   get_next_line.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: darguerr <darguerr@student.42malaga.com    +#+  +:+       +#+        */
+/*   By: darguerr <darguerr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/17 16:57:27 by darguerr          #+#    #+#             */
-/*   Updated: 2025/06/23 20:09:55 by darguerr         ###   ########.fr       */
+/*   Updated: 2025/06/24 18:12:32 by darguerr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,7 +50,17 @@ char *get_next_line(int fd)
 		return (remainder);
 	}
 	/**********/
-	line = extr
+	line = extract_line(remainder);
+	if (!line)
+	{
+		free(remainder);
+		remainder = NULL;
+		return (NULL);
+	}
+	remainder = update_remainder(remainder);
+
+	return(line);
+	
 }
 
 int main(void)
