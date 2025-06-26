@@ -3,82 +3,130 @@
 /*                                                        :::      ::::::::   */
 /*   get_next_line.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: darguerr <darguerr@student.42.fr>          +#+  +:+       +#+        */
+/*   By: darguerr <darguerr@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/06/17 16:57:27 by darguerr          #+#    #+#             */
-/*   Updated: 2025/06/24 19:49:35 by darguerr         ###   ########.fr       */
+/*   Created: 2025/06/25 16:46:44 by darguerr          #+#    #+#             */
+/*   Updated: 2025/06/26 12:59:35 by darguerr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "get_next_line.h"
 
-/* Get next line returns a read line of a file descriptor if is successful
-but if would there are other behaviors or errors must return NULL.
-*/
-char *get_next_line(int fd)
+//clean up memory allocated for a linked list node
+//while maintaining tge list's structure
+static t_list	*free_all(t_list *buffer)
 {
-	static char	*remainder = NULL;
-	char		buffer[BUFFER_SIZE + 1];
-	char		*line;
-	int			bytes_read;
+	t_list	*tmp;
 
-	if (fd < 0 || BUFFER_SIZE <= 0)
-		return (NULL);
-	if (!remainder)
-		remainder = malloc(1);
-	if(!remainder)
-		return (NULL);
-	remainder[0] = '\0';
-	while (!ft_strchr(remainder, '\n') && 
-			(bytes_read = read(fd, buffer, BUFFER_SIZE)) > 0)
-	{
-		buffer[bytes_read] = '\0';
-		remainder = ft_strjoin_free(remainder, buffer);
-		if (!remainder)
-			return (NULL);
-	}
-	if (bytes_read < 0)
-	{
-		free(remainder);
-		remainder = NULL;
-		return (NULL);
-	}
-	if (remainder[0] == '\0')
-	{
-		free(remainder);
-		remainder = NULL;
-		return (remainder);
-	}
-	/**********/
-	line = extract_line(remainder);
-	if (!line)
-	{
-		free(remainder);
-		remainder = NULL;
-		return (NULL);
-	}
-	remainder = update_remainder(remainder);
-
-	return(line);
-	
+	tmp = buffer->next;
+	free(buffer->buff);
+	free(buffer);
+	return (tmp);
 }
 
-int main(void)
+//Function that create a node
+static t_list	*init_buffer(int fd)
 {
-    int fd;
-    char    *line;
+	t_list	*buffer;
 
-    //open the file with the flag READ ONLY
-    //return the file descriptor
-    fd = open("file.txt", O_RDONLY); 
+	buffer = malloc(sizeof(t_list));
+	if (!buffer)
+		return (NULL);
+	buffer ->buff = ft_calloc(sizeof(char), BUFFER_SIZE);
+	if(!(buffer->buff))
+		return (free(buffer), NULL);
+	buffer->lengh = read(fd, buffer->buff, BUFFER_SIZE);
+	if (!(buffer->lengh < 0))
+	{
+		free(buffer->buff);
+		free(buffer);
+		return (NULL);
+	}
+	buffer->index = 0;
+	if (!buffer->lengh)
+		buffer->eof = TRUE;
+	else
+		buffer->next = NULL;
+	return (buffer);
+}
 
-//use the GNL function with fd parameter inside in a loop while
-    line = get_next_line(fd);
-    while (line != NULL)
-    {
-        line = get_next_line(fd);
-    }
+static char	*get_str(register int pos_end, register t_list **buffer)
+{
+	register int	index;
+	register char	*str;
+	char			*ptr;
 
-close(fd);
-return (0);
+	if (!((*buffer)->lengh))
+		return (NULL);
+	str = malloc(sizeof(char) * (pos_end + 1));
+	if (!str)
+		return (NULL);
+	ptr = str;
+	index = (*buffer)->index;
+	if (pos_end == -1)
+		return (free(str), NULL);
+	if (pos_end--)
+	{
+		*str++ = (*buffer)->buff[index++];
+		{
+			*buffer = free_all(*buffer);
+			index = 0;
+		}
+	}
+	if (*buffer)
+		(*buffer)->index = index;
+	*str = '\0';
+	return (ptr);
+}
+
+static int	end_line(int fd, register t_list *buffer)
+{
+	register int	i;
+	register int	pos_end;
+	t_list			*tmp;
+
+	i = buffer->index;
+	pos_end = 0;
+	while (buffer->buff[i] && i <= buffer->lengh)
+	{
+		++pos_end;
+		if ((i == buffer->lengh && buffer->eof) || buffer->buff[i] == '\n')
+			break ;
+		i++;
+		if (i == buffer->lengh)
+		{
+			tmp = init_buffer(fd);
+			if (!tmp)
+				return (-1);
+			tmp->next = buffer->next;
+			buffer->next = tmp;
+			buffer = tmp;
+			i = 0;
+		}
+	}
+	return (pos_end);
+}
+
+char	*get_next_line(int fd)
+{
+	static t_list	*fd_open[MAX_OPEN];
+	char			*str;
+	int				pos_end;
+
+	if (fd < 0)
+		return (NULL);
+	if (!fd_open[fd])
+		fd_open[fd] = init_buffer(fd);
+	pos_end = end_line(fd, fd_open[fd]);
+	if (fd_open[fd] != NULL && fd_open[fd]->eof == TRUE)
+	{
+		free(fd_open[fd]->buff);
+		free(fd_open[fd]);
+		fd_open[fd] = NULL;
+		return (NULL);
+	}
+	str = get_str(pos_end, &fd_open[fd]);
+	if (!str)
+		return (NULL);
+	return (str);
 }

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   get_next_line.h                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: darguerr <darguerr@student.42.fr>          +#+  +:+       +#+        */
+/*   By: darguerr <darguerr@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/17 17:00:50 by darguerr          #+#    #+#             */
-/*   Updated: 2025/06/24 19:48:41 by darguerr         ###   ########.fr       */
+/*   Updated: 2025/06/26 11:25:01 by darguerr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,26 +14,33 @@
 # define GET_NEXT_LINE_H
 
 # ifndef BUFFER_SIZE
-# define BUFFER_SIZE 10
+#  define BUFFER_SIZE 70
 # endif
 
 # include <unistd.h>
 # include <stdio.h>
 # include <stdlib.h>
 # include <stdarg.h>
-#include <fcntl.h>
+# include <fcntl.h>
+
+# define MAX_OPEN 65535
+
+typedef enum s_bool
+{
+	FALSE,
+	TRUE
+}	t_bool;
 
 typedef struct s_list
 {
-    char            *str_buf;
-    struct s_list   *next;
-}   t_list;
-
+	char			*buff;
+	int				lengh;
+	int				index;
+	t_bool			eof;
+	struct s_list	*next;
+}	t_list;
 
 char	*get_next_line(int fd);
-char	*ft_strchr(const char *str, int search_str);
-char	*ft_strjoin_free(char const *s1, char const *s2);
-size_t  ft_strlen(const char *s);
-char    *extract_line(const char *s);
-char    *update_list(char *s);
+void	*ft_calloc(size_t type, size_t size);
+
 #endif
