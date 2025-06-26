@@ -6,7 +6,7 @@
 /*   By: darguerr <darguerr@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/17 17:00:50 by darguerr          #+#    #+#             */
-/*   Updated: 2025/06/26 11:25:01 by darguerr         ###   ########.fr       */
+/*   Updated: 2025/06/26 13:08:27 by darguerr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,7 @@ typedef enum s_bool
 typedef struct s_list
 {
 	char			*buff;
-	int				lengh;
+	int				lenght;
 	int				index;
 	t_bool			eof;
 	struct s_list	*next;

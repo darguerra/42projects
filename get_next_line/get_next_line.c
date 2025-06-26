@@ -6,7 +6,7 @@
 /*   By: darguerr <darguerr@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/25 16:46:44 by darguerr          #+#    #+#             */
-/*   Updated: 2025/06/26 12:59:35 by darguerr         ###   ########.fr       */
+/*   Updated: 2025/06/26 13:18:45 by darguerr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ static t_list	*free_all(t_list *buffer)
 	return (tmp);
 }
 
-//Function that create a node
+// Function that creates a node for the buffer list
 static t_list	*init_buffer(int fd)
 {
 	t_list	*buffer;
@@ -32,18 +32,20 @@ static t_list	*init_buffer(int fd)
 	buffer = malloc(sizeof(t_list));
 	if (!buffer)
 		return (NULL);
-	buffer ->buff = ft_calloc(sizeof(char), BUFFER_SIZE);
-	if(!(buffer->buff))
+	buffer ->buff = ft_calloc(BUFFER_SIZE, sizeof(char));
+	if (!(buffer->buff))
+	{
 		return (free(buffer), NULL);
-	buffer->lengh = read(fd, buffer->buff, BUFFER_SIZE);
-	if (!(buffer->lengh < 0))
+		buffer->lenght = read(fd, buffer->buff, BUFFER_SIZE);
+	}
+	if (buffer->lenght < 0)
 	{
 		free(buffer->buff);
 		free(buffer);
 		return (NULL);
 	}
 	buffer->index = 0;
-	if (!buffer->lengh)
+	if (!buffer->lenght)
 		buffer->eof = TRUE;
 	else
 		buffer->next = NULL;
@@ -56,7 +58,7 @@ static char	*get_str(register int pos_end, register t_list **buffer)
 	register char	*str;
 	char			*ptr;
 
-	if (!((*buffer)->lengh))
+	if (!((*buffer)->lenght))
 		return (NULL);
 	str = malloc(sizeof(char) * (pos_end + 1));
 	if (!str)
@@ -87,13 +89,13 @@ static int	end_line(int fd, register t_list *buffer)
 
 	i = buffer->index;
 	pos_end = 0;
-	while (buffer->buff[i] && i <= buffer->lengh)
+	while (buffer->buff[i] && i <= buffer->lenght)
 	{
 		++pos_end;
-		if ((i == buffer->lengh && buffer->eof) || buffer->buff[i] == '\n')
+		if ((i == buffer->lenght && buffer->eof) || buffer->buff[i] == '\n')
 			break ;
 		i++;
-		if (i == buffer->lengh)
+		if (i == buffer->lenght)
 		{
 			tmp = init_buffer(fd);
 			if (!tmp)
