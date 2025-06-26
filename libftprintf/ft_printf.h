@@ -3,15 +3,15 @@
 /*                                                        :::      ::::::::   */
 /*   ft_printf.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: darguerr <darguerr@student.42malaga.com    +#+  +:+       +#+        */
+/*   By: darguerr <darguerr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/23 21:50:55 by darguerr          #+#    #+#             */
-/*   Updated: 2025/06/04 23:51:12 by darguerr         ###   ########.fr       */
+/*   Updated: 2025/06/26 15:44:46 by darguerr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef LIBFTPRINTF_H
-# define LIBFTPRINTF_H
+#ifndef FT_PRINTF_H
+# define FT_PRINTF_H
 # include <unistd.h>
 # include <stdio.h>
 # include <stdlib.h>
@@ -27,4 +27,5 @@ int				ft_putstring(char *string);
 int				ft_puthxd(unsigned long num, int uppercase);
 int				ft_putpointer(void *ptr);
 int				ft_putunsignedint(unsigned int n);
+
 #endif
