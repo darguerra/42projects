@@ -6,7 +6,7 @@
 /*   By: darguerr <darguerr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/25 16:46:44 by darguerr          #+#    #+#             */
-/*   Updated: 2025/06/27 02:38:18 by darguerr         ###   ########.fr       */
+/*   Updated: 2025/06/27 13:35:50 by darguerr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,7 +60,7 @@ static char	*get_str(register int pos_end, register t_list **buffer)
 	register char	*str; //Pointer to the end of the String
 	char			*ptr; //Pointer to the start of the String
 
-	if (!((*buffer)->length) || pos_end <= 0)
+	if (!(*buffer) || (!(*buffer)->length) || pos_end <= 0)
 		return (NULL);
 	str = malloc(sizeof(char) * (pos_end + 1));
 	if (!str)
@@ -90,9 +90,11 @@ static int	end_line(int fd, register t_list *buffer)
 	register int	pos_end;
 	t_list			*tmp;
 
-	i = buffer->index; //add in index the value of i
-	pos_end = 0; //initialization of pos-end in 0
-	while (buffer->buff[i] && i <= buffer->length) //while buff inside of buffer exists and i is <= length inside in buffer do it
+	if (!buffer)
+		return (-1);
+	i = buffer->index;
+	pos_end = 0;
+	while (buffer->buff[i] && i < buffer->length)
 	{
 		++pos_end;
 		if ((i == buffer->length && buffer->eof) || buffer->buff[i] == '\n')
@@ -114,24 +116,31 @@ static int	end_line(int fd, register t_list *buffer)
 
 char	*get_next_line(int fd)
 {
-	static t_list	*fd_open[MAX_OPEN]; //Array
-	char			*str; //pointer
+	static t_list	*fd_open[MAX_OPEN];
+	char			*str;
 	int				pos_end;
 
-	if (fd < 0) //if fd is < 0 return NULL
+	if (fd < 0)
 		return (NULL);
-	if (!fd_open[fd]) //If there is not initialition insert in the array fd_open the result about init_buffer function
+	if (!fd_open[fd])
 		fd_open[fd] = init_buffer(fd);
 	pos_end = end_line(fd, fd_open[fd]);
-	if (fd_open[fd] != NULL && fd_open[fd]->eof == TRUE)
+	if (pos_end <= 0 )
+	{
+		if (fd_open[fd])
+		{
+			free(fd_open[fd]->buff);
+			free(fd_open[fd]);
+			fd_open[fd] = NULL;
+		}
+		return (NULL);
+	}
+	str = get_str(pos_end, &fd_open[fd]);
+	if (fd_open[fd] && fd_open[fd]->eof && fd_open[fd]->index >= fd_open[fd]->length)
 	{
 		free(fd_open[fd]->buff);
 		free(fd_open[fd]);
 		fd_open[fd] = NULL;
-		return (NULL);
 	}
-	str = get_str(pos_end, &fd_open[fd]);
-	if (!str)
-		return (NULL);
 	return (str);
 }
