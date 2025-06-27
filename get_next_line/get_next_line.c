@@ -6,7 +6,7 @@
 /*   By: darguerr <darguerr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/25 16:46:44 by darguerr          #+#    #+#             */
-/*   Updated: 2025/06/27 13:35:50 by darguerr         ###   ########.fr       */
+/*   Updated: 2025/06/27 18:27:31 by darguerr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,6 @@ static t_list	*free_all(t_list *buffer)
 	free(buffer);
 	return (tmp);
 }
-
 // Function that creates a node for the buffer list
 static t_list	*init_buffer(int fd)
 {
@@ -76,6 +75,8 @@ static char	*get_str(register int pos_end, register t_list **buffer)
 		{
 			*buffer = free_all(*buffer);
 			index = 0;
+			if (!(*buffer) && pos_end > 0)
+				break;
 		}
 	}
 	if (*buffer)
@@ -97,12 +98,13 @@ static int	end_line(int fd, register t_list *buffer)
 	while (buffer->buff[i] && i < buffer->length)
 	{
 		++pos_end;
-		if ((i == buffer->length && buffer->eof) || buffer->buff[i] == '\n')
+		if (buffer->buff[i] == '\n')
 			break ;
 		i++;
 		if (i == buffer->length)
 		{
 			tmp = init_buffer(fd);
+			
 			if (!tmp)
 				return (-1);
 			tmp->next = buffer->next;
@@ -120,10 +122,14 @@ char	*get_next_line(int fd)
 	char			*str;
 	int				pos_end;
 
-	if (fd < 0)
+	if (fd < 0 || BUFFER_SIZE <= 0)
 		return (NULL);
 	if (!fd_open[fd])
+	{
 		fd_open[fd] = init_buffer(fd);
+		if (!fd_open[fd])
+			return (NULL);
+	}
 	pos_end = end_line(fd, fd_open[fd]);
 	if (pos_end <= 0 )
 	{
@@ -144,3 +150,20 @@ char	*get_next_line(int fd)
 	}
 	return (str);
 }
+
+/*int	main(void)
+{
+	char *example;
+	int fd;
+
+	fd = open("file.txt", O_RDONLY);
+
+	while ((example = get_next_line(fd)) != NULL)
+	{
+		printf("%s", example);
+		free(example);
+	}
+
+	close(fd);
+	return (0);
+}*/
