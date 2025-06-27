@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   get_next_line.h                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: darguerr <darguerr@student.42malaga.com    +#+  +:+       +#+        */
+/*   By: darguerr <darguerr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/17 17:00:50 by darguerr          #+#    #+#             */
-/*   Updated: 2025/06/26 13:08:27 by darguerr         ###   ########.fr       */
+/*   Updated: 2025/06/26 17:59:38 by darguerr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,7 @@ typedef enum s_bool
 typedef struct s_list
 {
 	char			*buff;
-	int				lenght;
+	int				length;
 	int				index;
 	t_bool			eof;
 	struct s_list	*next;
