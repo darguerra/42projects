@@ -6,7 +6,7 @@
 /*   By: darguerr <darguerr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/25 16:46:44 by darguerr          #+#    #+#             */
-/*   Updated: 2025/06/27 19:01:00 by darguerr         ###   ########.fr       */
+/*   Updated: 2025/06/28 19:10:39 by darguerr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,17 @@ static t_list	*free_all(t_list *buffer)
 	free(buffer->buff);
 	free(buffer);
 	return (tmp);
+}
+
+void free_list(t_list **list){
+	t_list *tmp;
+	
+	while(*list)
+	{
+		tmp = (*list)->next;
+		free_all(*list);
+		*list = tmp;
+	}
 }
 
 // Function that creates a node for the buffer list
@@ -55,15 +66,18 @@ static t_list	*init_buffer(int fd)
 }
 
 //return a pointer that points to the begining of the line
-static char	*get_str(register int pos_end, register t_list **buffer)
+static char	*get_str(int pos_end, t_list **buffer)
 {
-	register int	index;
-	register char	*str;
+	int	index;
+	char	*str;
 	char			*ptr;
 
 	str = malloc(sizeof(char) * (pos_end + 1));
 	if ((!(*buffer) || (!(*buffer)->length) || pos_end <= 0) || (!str))
+	{
+		free_list(buffer);
 		return (NULL);
+	}
 	ptr = str;
 	index = (*buffer)->index;
 	if (pos_end == -1)
@@ -142,6 +156,7 @@ char	*get_next_line(int fd)
 		return (NULL);
 	}
 	str = get_str(pos_end, &fd_open[fd]);
+
 	if (fd_open[fd] && fd_open[fd]->eof
 		&& fd_open[fd]->index >= fd_open[fd]->length)
 	{
@@ -152,7 +167,7 @@ char	*get_next_line(int fd)
 	return (str);
 }
 
-/*int	main(void)
+int	main(void)
 {
 	char *example;
 	int fd;
@@ -167,4 +182,4 @@ char	*get_next_line(int fd)
 
 	close(fd);
 	return (0);
-}*/
+}
