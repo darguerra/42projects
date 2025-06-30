@@ -6,34 +6,11 @@
 /*   By: darguerr <darguerr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/25 16:46:44 by darguerr          #+#    #+#             */
-/*   Updated: 2025/06/28 19:10:39 by darguerr         ###   ########.fr       */
+/*   Updated: 2025/06/30 08:54:23 by darguerr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "get_next_line.h"
-
-//clean up memory allocated for a linked list node
-//while maintaining the list's structure
-static t_list	*free_all(t_list *buffer)
-{
-	t_list	*tmp;
-
-	tmp = buffer->next;
-	free(buffer->buff);
-	free(buffer);
-	return (tmp);
-}
-
-void free_list(t_list **list){
-	t_list *tmp;
-	
-	while(*list)
-	{
-		tmp = (*list)->next;
-		free_all(*list);
-		*list = tmp;
-	}
-}
 
 // Function that creates a node for the buffer list
 static t_list	*init_buffer(int fd)
@@ -68,16 +45,13 @@ static t_list	*init_buffer(int fd)
 //return a pointer that points to the begining of the line
 static char	*get_str(int pos_end, t_list **buffer)
 {
-	int	index;
+	int		index;
 	char	*str;
-	char			*ptr;
+	char	*ptr;
 
 	str = malloc(sizeof(char) * (pos_end + 1));
 	if ((!(*buffer) || (!(*buffer)->length) || pos_end <= 0) || (!str))
-	{
-		free_list(buffer);
-		return (NULL);
-	}
+		return (free(*buffer), NULL);
 	ptr = str;
 	index = (*buffer)->index;
 	if (pos_end == -1)
@@ -95,16 +69,15 @@ static char	*get_str(int pos_end, t_list **buffer)
 	}
 	if (*buffer)
 		(*buffer)->index = index;
-	*str = '\0';
-	return (ptr);
+	return (*str = '\0', ptr);
 }
 
 //Determines where the current line ends and calculates its length.
-static int	end_line(int fd, register t_list *buffer)
+static int	end_line(int fd, t_list *buffer)
 {
-	register int	i;
-	register int	pos_end;
-	t_list			*tmp;
+	int		i;
+	int		pos_end;
+	t_list	*tmp;
 
 	if (!buffer)
 		return (-1);
@@ -112,10 +85,9 @@ static int	end_line(int fd, register t_list *buffer)
 	pos_end = 0;
 	while (buffer->buff[i] && i < buffer->length)
 	{
+		if (buffer->buff[i++] == '\n')
+			return (++pos_end);
 		++pos_end;
-		if (buffer->buff[i] == '\n')
-			break ;
-		i++;
 		if (i == buffer->length)
 		{
 			tmp = init_buffer(fd);
@@ -146,28 +118,15 @@ char	*get_next_line(int fd)
 	}
 	pos_end = end_line(fd, fd_open[fd]);
 	if (pos_end <= 0)
-	{
-		if (fd_open[fd])
-		{
-			free(fd_open[fd]->buff);
-			free(fd_open[fd]);
-			fd_open[fd] = NULL;
-		}
-		return (NULL);
-	}
+		return (free_list(&fd_open[fd]), NULL);
 	str = get_str(pos_end, &fd_open[fd]);
-
 	if (fd_open[fd] && fd_open[fd]->eof
 		&& fd_open[fd]->index >= fd_open[fd]->length)
-	{
-		free(fd_open[fd]->buff);
-		free(fd_open[fd]);
-		fd_open[fd] = NULL;
-	}
+		free_list(&fd_open[fd]);
 	return (str);
 }
 
-int	main(void)
+/*int	main(void)
 {
 	char *example;
 	int fd;
@@ -182,4 +141,4 @@ int	main(void)
 
 	close(fd);
 	return (0);
-}
+}*/

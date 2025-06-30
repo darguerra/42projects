@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   get_next_line_utils.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: darguerr <darguerr@student.42malaga.com    +#+  +:+       +#+        */
+/*   By: darguerr <darguerr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/25 16:42:33 by darguerr          #+#    #+#             */
-/*   Updated: 2025/06/26 11:11:34 by darguerr         ###   ########.fr       */
+/*   Updated: 2025/06/30 08:41:44 by darguerr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,4 +35,28 @@ void	*ft_calloc(size_t type, size_t size)
 		return (NULL);
 	ft_bzero(ptr, size * type);
 	return (ptr);
+}
+
+//clean up memory allocated for a linked list node
+//while maintaining the list's structure
+t_list	*free_all(t_list *buffer)
+{
+	t_list	*tmp;
+
+	tmp = buffer->next;
+	free(buffer->buff);
+	free(buffer);
+	return (tmp);
+}
+
+void	free_list(t_list **list)
+{
+	t_list	*tmp;
+
+	while (*list)
+	{
+		tmp = (*list)->next;
+		free_all(*list);
+		*list = tmp;
+	}
 }

@@ -6,7 +6,7 @@
 /*   By: darguerr <darguerr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/17 17:00:50 by darguerr          #+#    #+#             */
-/*   Updated: 2025/06/28 19:08:24 by darguerr         ###   ########.fr       */
+/*   Updated: 2025/06/30 08:42:04 by darguerr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,7 +40,9 @@ typedef struct s_list
 	struct s_list	*next;
 }	t_list;
 
-char	*get_next_line(int fd);
-void	*ft_calloc(size_t type, size_t size);
+char			*get_next_line(int fd);
+void			*ft_calloc(size_t type, size_t size);
+t_list			*free_all(t_list *buffer);
+void			free_list(t_list **list);
 
 #endif
